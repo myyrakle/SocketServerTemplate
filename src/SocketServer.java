@@ -7,7 +7,7 @@ public class SocketServer
 {
     public interface IRouter
     {
-        public abstract void route(Socket client);
+        public abstract void route(Socket client, HashMap<String, String> optionalArguments);
     }
 
     private ServerSocket serverSocket=null;
@@ -40,7 +40,7 @@ public class SocketServer
 
                 //...파싱
                 String command = "";
-                routerMap.get(command).route(client);
+                routerMap.get(command).route(client, null);
             }
             catch (IOException e)
             {
